@@ -1,0 +1,6 @@
+# GaAs zincblende, a = 5.653 Angstrom (2-atom primitive cell)
+lattice_vector  0.000000  2.826500  2.826500
+lattice_vector  2.826500  0.000000  2.826500
+lattice_vector  2.826500  2.826500  0.000000
+atom_frac 0.00 0.00 0.00 Ga
+atom_frac 0.25 0.25 0.25 As

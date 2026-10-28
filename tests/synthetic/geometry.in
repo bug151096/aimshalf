@@ -1,0 +1,7 @@
+lattice_vector 3.19 0.0 0.0
+lattice_vector 0.0 3.19 0.0
+lattice_vector 0.0 0.0 5.19
+atom_frac 0.333 0.667 0.0 Ga
+atom_frac 0.667 0.333 0.5 Ga
+atom_frac 0.333 0.667 0.377 N
+atom_frac 0.667 0.333 0.877 N

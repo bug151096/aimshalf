@@ -1,0 +1,41 @@
+aimshalf vs minushalf -- self-energy potential validation
+aimshalf : /home/e/Documentos/Doutorado/aims_half
+minushalf: /home/e/Documentos/Doutorado/minushalf  (version 1.8)
+atmhalf  : /home/e/Documentos/Doutorado/aims_half/atom/atmhalf
+XC = pb, trimming exponent: minushalf 8, aimshalf 8
+
+L1-a  INP generation (all elements with fixtures in both codes, l = s,p,d,f, dq = 0.5)
+  [PASS] L1-a  102 elements x 4 l           408 identical; 0 differ
+
+L1-b/c/d  atomic runs, parsing and SEP for each case
+  [PASS] L1-b  As_p0.5 (INP->VTOTAL)        max|dV| between VTOTALs from mh/ah INPs = 0.00e+00 Ha
+  [PASS] L1-c  As_p0.5                      n_r mh=1142 ah=1142, arrays identical=True
+  [PASS] L1-d  As_p0.5                      max|V_mh - V_ah| over cuts [2.0, 3.0, 3.8, 5.0], A=+-1: 5.55e-17 Ha
+  [PASS] L1-b  Ga_p0.5 (INP->VTOTAL)        max|dV| between VTOTALs from mh/ah INPs = 0.00e+00 Ha
+  [PASS] L1-c  Ga_p0.5                      n_r mh=1137 ah=1137, arrays identical=True
+  [PASS] L1-d  Ga_p0.5                      max|V_mh - V_ah| over cuts [2.0, 3.0, 3.8, 5.0], A=+-1: 5.55e-17 Ha
+  [PASS] L1-b  Ga_s0.5 (INP->VTOTAL)        max|dV| between VTOTALs from mh/ah INPs = 0.00e+00 Ha
+  [PASS] L1-c  Ga_s0.5                      n_r mh=1137 ah=1137, arrays identical=True
+  [PASS] L1-d  Ga_s0.5                      max|V_mh - V_ah| over cuts [2.0, 3.0, 3.8, 5.0], A=+-1: 5.55e-17 Ha
+  [PASS] L1-b  N_p0.5 (INP->VTOTAL)         max|dV| between VTOTALs from mh/ah INPs = 0.00e+00 Ha
+  [PASS] L1-c  N_p0.5                       n_r mh=1018 ah=1018, arrays identical=True
+  [PASS] L1-d  N_p0.5                       max|V_mh - V_ah| over cuts [2.0, 3.0, 3.8, 5.0], A=+-1: 1.11e-16 Ha
+  [PASS] L1-b  P_p0.5 (INP->VTOTAL)         max|dV| between VTOTALs from mh/ah INPs = 0.00e+00 Ha
+  [PASS] L1-c  P_p0.5                       n_r mh=1079 ah=1079, arrays identical=True
+  [PASS] L1-d  P_p0.5                       max|V_mh - V_ah| over cuts [2.0, 3.0, 3.8, 5.0], A=+-1: 5.55e-17 Ha
+  [PASS] L1-b  In_p0.5 (INP->VTOTAL)        max|dV| between VTOTALs from mh/ah INPs = 0.00e+00 Ha
+  [PASS] L1-c  In_p0.5                      n_r mh=1174 ah=1174, arrays identical=True
+  [PASS] L1-d  In_p0.5                      max|V_mh - V_ah| over cuts [2.0, 3.0, 3.8, 5.0], A=+-1: 5.55e-17 Ha
+
+L1-b  minushalf's shipped Ga VTOTAL / VTOTAL_OCC (their build) vs fresh atmhalf run
+  [PASS] L1-b  Ga fixture reproduction      max|dV_S| = 8.03e-06 Ha = 2.18e-04 eV (different compiler/build)
+
+L1-e  minushalf POTCAR q-space correction vs radial FT of aimshalf's real-space SEP
+  [PASS] L1-e  As_p0.5                      max relative difference = 7.32e-06 (quadrature only)
+
+L2  multi-channel correction As s:0.1, p:0.4 at r_cut=3.8
+  [PASS] L2    As s+p                       max|V_aimshalf file - sum(V_minushalf channels)| = 5.27e-16 Ha
+
+==============================================================================
+SUMMARY: 22/22 checks passed
+results in /home/e/Documentos/Doutorado/aims_half/validation/results

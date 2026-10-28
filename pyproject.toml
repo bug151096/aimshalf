@@ -1,0 +1,23 @@
+[project]
+name = "aimshalf"
+version = "0.3.0"
+description = "DFT-1/2 band gap correction workflow for FHI-aims"
+readme = "README.md"
+authors = [{ name = "Eduardo Afonso Moreira Santos" }]
+license = "GPL-3.0-only"
+requires-python = ">=3.9"
+dependencies = ["numpy", "pyyaml"]
+
+[project.optional-dependencies]
+plots = ["matplotlib"]
+dev = ["pytest", "matplotlib"]
+
+[project.scripts]
+aimshalf = "aimshalf.cli:main"
+
+[tool.setuptools]
+packages = ["aimshalf"]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"

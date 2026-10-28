@@ -1,0 +1,49 @@
+# aimshalf.yaml -- put it next to control.in and geometry.in, then run:  aimshalf execute
+# Every key is optional; the values below are the defaults unless noted.
+
+aims_cmd: "mpirun -np 8 /path/to/aims.x"   # PATCHED aims binary (example, not a default)
+xc: pb                    # ATOM functional; must match 'xc' in control.in (pb = PBE, ca = LDA)
+
+# --- which orbitals to correct ---------------------------------------------------
+# auto (or empty): plain-PBE run in pbe_ref/ with Mulliken bands; the VBM character decides.
+# explicit:        {species: {l: electrons removed}}, e.g.  corrections: {As: {p: 0.5}}
+corrections: auto
+correction_code: v        # minushalf codes: v, vf, c, cf, vc, vfc, vcf, vfcf
+                          #   v / c : dominant VBM / CBM orbital
+                          #   f     : every orbital above the threshold (vf, cf)
+                          #   c     : conduction correction (amplitude -|A|), after the valence
+valence_threshold: 10.0   # % (vf)
+conduction_threshold: 9.0 # % (cf)
+conduction_corrections:   # explicit mode only, e.g. {Al: {s: 0.5}}
+pbe_ref_dir: pbe_ref
+overwrite_vbm:            # [k, state]: take this band as the VBM (numbers from band-gap)
+overwrite_cbm:            # [k, state]: take this band as the CBM
+vbm_characters:           # [[species, l, percent], ...], e.g. [[As, p, 80]]
+cbm_characters:           # same for the CBM
+divide_character:         # [[species, l, n], ...]: equal nearest neighbours (default: geometry.in)
+
+# --- which gap is maximized (minushalf convention) --------------------------------
+indirect: false           # false: smallest direct gap, VBM/CBM at the same k-point
+                          # true:  fundamental gap (VBM and CBM at any k-point)
+
+# --- r_cut search (bohr) ----------------------------------------------------------
+cut_min: 1.5
+cut_max: 5.0
+cut_ranges:               # optional, per species; overrides cut_min/cut_max
+#  N: [1.5, 4.0]
+#  As: [2.5, 5.0]
+coarse_points: 5          # coarse scan that brackets the maximum
+tol: 0.05                 # stop when the bracket is narrower than this
+gap_tol: 0.005            # eV: stop when the top of gap(r_cut) is this flat
+max_iter: 12              # golden-section steps after the coarse scan
+cut_resolution: 0.01      # cuts are rounded to this; a cut is never run twice
+
+# --- gap and potential -------------------------------------------------------------
+use_band_files: true      # gap on the band path (band*.out); needs 'output band' lines
+power: 8                  # trimming exponent of Theta(r)
+amplitude: 1.0            # scales the SEP
+
+# --- runs ------------------------------------------------------------------------
+run_timeout: 0            # s per aims run, 0 = no limit
+finish_grace: 30          # s: kill an MPI launcher still alive after aims finished
+reuse_unverified: false   # true: reuse finished runs made before 0.2 (no fingerprint)

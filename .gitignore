@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+_arquivo/
+atom/atmhalf
+install_tests/

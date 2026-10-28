@@ -1,0 +1,5 @@
+lattice_vector  0.000000  2.826500  2.826500
+lattice_vector  2.826500  0.000000  2.826500
+lattice_vector  2.826500  2.826500  0.000000
+atom_frac 0.00 0.00 0.00 Al
+atom_frac 0.25 0.25 0.25 As

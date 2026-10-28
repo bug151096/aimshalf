@@ -1,0 +1,6 @@
+# Si, diamond, 2-atom primitive cell (a = 5.431 A)
+lattice_vector  0.0000  2.7155  2.7155
+lattice_vector  2.7155  0.0000  2.7155
+lattice_vector  2.7155  2.7155  0.0000
+atom_frac 0.00 0.00 0.00 Si
+atom_frac 0.25 0.25 0.25 Si

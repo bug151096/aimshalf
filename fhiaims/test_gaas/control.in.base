@@ -1,0 +1,9 @@
+# aimshalf installation test -- GaAs, PBE, light species, small k-grid
+xc                 pbe
+relativistic       atomic_zora scalar
+spin               none
+k_grid             4 4 4
+occupation_type    gaussian 0.01
+sc_accuracy_rho    1E-5
+sc_accuracy_eev    1E-3
+sc_accuracy_etot   1E-6
